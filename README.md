@@ -4,13 +4,13 @@ A rest API for encrypting data and files built using django rest framework and R
 # Live Preview 
 
 <ul>
-  <li><a href="https://">Frontend Demo</a>
+  <li><a href="https://zedkira-encryption-api.vercel.app/">Frontend Demo</a>
 </ul>
 
 
 # Screenshot
 
-![Demo Screenshot](https://github.com/zed-kira/Encryption-API/blob/main/images/api_docs.JPG)
+![Demo Screenshot](https://github.com/zed-kira/Encryption-API/blob/main/images/demo.JPG)
 
 
 # Installation
