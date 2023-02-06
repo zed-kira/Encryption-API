@@ -89,7 +89,7 @@ const Sidebar = (props) => {
                     items={[
                         {
                             key: '1',
-                            icon: <img style={ collapsed ? { marginTop: 10, marginLeft: -10 } : { marginTop: 5 }} width={30} height={30} src={logo}/>, /* <DashboardOutlined /> */
+                            icon: <img style={ collapsed ? { marginTop: 10, marginLeft: -10 } : { marginTop: 3 }} width={30} height={30} src={logo}/>, /* <DashboardOutlined /> */
                             label: 'Zedkira',
                             style: { backgroundColor: 'transparent' },
                         },
