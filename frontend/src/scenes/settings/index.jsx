@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 import { Card, Select } from 'antd';
 import { Button, Input, Tooltip } from 'antd';
 import { Form } from 'antd';
-import { notification, message } from 'antd';
+import { notification, Typography } from 'antd';
 
 // Ant Design Icons
 import { CopyOutlined } from '@ant-design/icons';
@@ -15,6 +15,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import uuid from 'react-uuid';
 
 const { Content } = Layout;
+const { Title } = Typography;
 
 const Settings = (props) => {
 
@@ -72,6 +73,7 @@ const Settings = (props) => {
                 background: colorBgContainer,
               }}
             >
+              <Title>Settings</Title>
               <Card
                 style={{ marginTop: 16 }}
                 type="inner"

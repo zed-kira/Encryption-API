@@ -54,7 +54,6 @@ function App() {
             className="site-layout"
             style={{
               marginLeft: collapsed ? 80 : 200,
-              
             }}
           >
             <Navbar collapsed={collapsed} setCollapsed={setCollapsed} colorBgContainer={colorBgContainer} dark={dark} setMode={setMode} />

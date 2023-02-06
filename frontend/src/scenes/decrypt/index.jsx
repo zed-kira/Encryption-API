@@ -207,7 +207,7 @@ const Decrypt = (props) => {
                 background: colorBgContainer,
               }}
             >
-              <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+                <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
             </Content>
         </>
     );

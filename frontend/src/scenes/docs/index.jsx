@@ -94,6 +94,7 @@ const Docs = (props) => {
                 background: colorBgContainer,
               }}
             >
+              <Title>API Docs</Title>
               <Space
                 direction="vertical"
                 size="middle"
