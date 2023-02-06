@@ -5,82 +5,61 @@ import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 // Ant Design
-import { Layout, Menu, theme } from 'antd';
+import { Layout, theme, Menu } from 'antd';
 
-// Ant Design Icons
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
+// Global Components
+import Sidebar from './scenes/global/Sidebar';
+import Navbar from './scenes/global/Navbar';
 
+// Pages Components
+import Encrypt from './scenes/encrypt';
+import Decrypt from './scenes/decrypt';
+import Docs from './scenes/docs';
+import Settings from './scenes/settings';
 
 // Styling 
 import './App.css';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
 
   const [collapsed, setCollapsed] = useState(false);
+
+  const [dark, setMode] = useState(true);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const [content, setContent] = useState(<Encrypt colorBgContainer={colorBgContainer} />);
+
+  const handleMenuClick = (e) => {
+
+    const content = [
+      <Encrypt colorBgContainer={colorBgContainer} />,
+      <Decrypt colorBgContainer={colorBgContainer} />,
+      <Docs colorBgContainer={colorBgContainer} />, 
+      <Settings colorBgContainer={colorBgContainer} />,
+    ]
+
+    setContent(content[e.key]);
+  }
+
   return (
       <>
-        <Layout
-          style={{ height: '100vh' }}
-        >
-          <Sider trigger={null} collapsible collapsed={collapsed}>
-            <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="inline"
-              defaultSelectedKeys={['1']}
-              items={[
-                {
-                  key: '1',
-                  icon: <UserOutlined />,
-                  label: 'nav 1',
-                },
-                {
-                  key: '2',
-                  icon: <VideoCameraOutlined />,
-                  label: 'nav 2',
-                },
-                {
-                  key: '3',
-                  icon: <UploadOutlined />,
-                  label: 'nav 3',
-                },
-              ]}
-            />
-          </Sider>
-          <Layout className="site-layout">
-            <Header
-              style={{
-                padding: 0,
-                background: colorBgContainer,
-              }}
-            >
-              {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                className: 'trigger',
-                onClick: () => setCollapsed(!collapsed),
-              })}
-            </Header>
-            <Content
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-                minHeight: 280,
-                background: colorBgContainer,
-              }}
-            >
-              Content
-            </Content>
+        <Layout hasSider>
+          <Sidebar collapsed={collapsed} handleMenuClick={handleMenuClick} dark={dark} />
+          <Layout
+            className="site-layout"
+            style={{
+              marginLeft: collapsed ? 80 : 200,
+              
+            }}
+          >
+            <Navbar collapsed={collapsed} setCollapsed={setCollapsed} colorBgContainer={colorBgContainer} dark={dark} setMode={setMode} />
+            {content}
+            <Footer style={{ textAlign: 'center' }}>Copyright &copy; {new Date().getFullYear()} Zedkira. All rights reserved.</Footer>
           </Layout>
         </Layout>
       </>
